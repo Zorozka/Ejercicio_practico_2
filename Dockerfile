@@ -16,9 +16,7 @@ WORKDIR /var/www
 COPY . .
 
 # Genera .env y prepara Laravel
-RUN cp .env.example .env && \
-    composer install --no-dev --optimize-autoloader && \
-    php artisan key:generate
+
 
 # Expone el puerto para Laravel
 EXPOSE 8080

@@ -14,8 +14,7 @@ WORKDIR /var/www
 # Copia archivos del proyecto
 COPY . .
 
-# Instala dependencias de PHP (Laravel)
-RUN composer install --no-dev --optimize-autoloader
+
 
 # Copia el archivo de entorno
 RUN cp .env.example .env && php artisan key:generate

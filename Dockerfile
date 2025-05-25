@@ -19,9 +19,8 @@ RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framewor
     chmod -R 775 storage bootstrap/cache
 
 # Instala dependencias y configura Laravel
-RUN cp .env.example .env && \
-    composer install --no-dev --optimize-autoloader && \
-    php artisan key:generate
+RUN echo "APP_NAME=Laravel\nAPP_ENV=local\nAPP_KEY=\nAPP_DEBUG=true\nAPP_URL=http://localhost\nDB_CONNECTION=pgsql\nDB_HOST=localhost\nDB_PORT=5432\nDB_DATABASE=laravel\nDB_USERNAME=postgres\nDB_PASSWORD=yourpassword" > .env
+
 
 # Expone el puerto
 EXPOSE 8080

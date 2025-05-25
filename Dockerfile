@@ -19,7 +19,7 @@ RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framewor
     chmod -R 775 storage bootstrap/cache
 
 # Instala dependencias y configura Laravel
-RUN echo "APP_NAME=Laravel\nAPP_ENV=local\nAPP_KEY=\nAPP_DEBUG=true\nAPP_URL=http://localhost\nDB_CONNECTION=pgsql\nDB_HOST=localhost\nDB_PORT=5432\nDB_DATABASE=laravel\nDB_USERNAME=postgres\nDB_PASSWORD=yourpassword" > .env
+RUN echo "APP_NAME=Laravel\nAPP_ENV=local\nAPP_KEY=\nAPP_DEBUG=true\nAPP_URL=https://ejercicio-practico-2.onrender.com\nDB_CONNECTION=pgsql\nDB_HOST=dpg-d0pi4o0dl3ps73aqk4q0-a\nDB_PORT=5432\nDB_DATABASE=ejercicio_db\nDB_USERNAME=ejercicio_db_user\nDB_PASSWORD=IeIIMakVOSF8olZ8KU30gjdF8eCsR8s2" > .env
 
 
 # Expone el puerto

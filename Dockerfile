@@ -10,8 +10,16 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-# Copia todos los archivos del proyecto
+# Copia archivos del proyecto
 COPY . .
 
-# ¡NO! ejecutamos Composer aquí
-CMD php artisan serve --host=0.0.0.0 --port=8080
+# Genera .env y prepara Laravel
+RUN cp .env.example .env && \
+    composer install --no-dev --optimize-autoloader && \
+    php artisan key:generate
+
+# Expone el puerto para Laravel
+EXPOSE 8080
+
+# Comando de inicio
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]

@@ -1,6 +1,6 @@
 FROM php:8.3-fpm
 
-# Instala dependencias
+# Instala extensiones necesarias
 RUN apt-get update && apt-get install -y \
     git curl zip unzip libpq-dev libonig-dev libxml2-dev \
     && docker-php-ext-install pdo pdo_pgsql
@@ -10,8 +10,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
+# Copia todos los archivos del proyecto
 COPY . .
 
-# No ejecutamos NADA aún: Artisan y Composer correrán después del build
-
+# ¡NO! ejecutamos Composer aquí
 CMD php artisan serve --host=0.0.0.0 --port=8080
